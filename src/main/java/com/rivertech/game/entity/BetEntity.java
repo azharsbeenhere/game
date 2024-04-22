@@ -24,6 +24,5 @@ public class BetEntity {
     private Integer lostAmount;
     private String betResult;
     private Integer updatedCredits;
-    @CreatedDate
     private LocalDateTime betTime;
 }

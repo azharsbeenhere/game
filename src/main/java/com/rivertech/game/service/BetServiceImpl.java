@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +25,7 @@ public class BetServiceImpl implements BetService {
     public BetDto addBet(final BetDto betDto) {
         ValidationUtil.validateNotNull(betDto, "BetDto");
         betDto.setId(BetEntity.TYPE + ID_DELIMITER + UUID.randomUUID());
+        betDto.setBetTime(LocalDateTime.now());
         final BetEntity betEntity = BetMapper.INSTANCE.toEntity(betDto);
         return BetMapper.INSTANCE.toDto(betRepository.save(betEntity));
     }
